@@ -102,7 +102,7 @@ public class DeviceModule extends ExportedModule implements RegistryLifecycleLis
     constants.put("osInternalBuildId", Build.ID);
     constants.put("osBuildFingerprint", Build.FINGERPRINT);
     constants.put("platformApiLevel", Build.VERSION.SDK_INT);
-    constants.put("deviceName", Settings.Secure.getString(mContext.getContentResolver(), "bluetooth_name"));
+    constants.put("deviceName", Settings.Secure.getString(mContext.getContentResolver(), Build.VERSION.SDK_INT <= 31 ? "bluetooth_name" : Settings.Global.DEVICE_NAME));
 
     return constants;
   }
